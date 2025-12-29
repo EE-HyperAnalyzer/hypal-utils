@@ -1,3 +1,3 @@
-from .data import Sensor_Data
+from .data import SensorData
 
-__all__ = ["Sensor_Data"]
+__all__ = ["SensorData"]
