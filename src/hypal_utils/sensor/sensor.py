@@ -9,7 +9,7 @@ from hypal_utils.sensor.data import SensorData
 class Sensor:
     name: str
     source: str
-    detectors: tuple[Detector]
+    detectors: tuple[Detector, ...]
 
     def read(self) -> SensorData:
         values: tuple[Candle_OHLC, ...] = tuple(
