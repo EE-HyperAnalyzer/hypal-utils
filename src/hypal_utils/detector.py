@@ -7,6 +7,7 @@ from hypal_utils.candles.ohlc import Candle_OHLC
 @dataclass
 class Detector(ABC):
     name: str
+    unit: str
 
     @abstractmethod
     def read(self) -> Candle_OHLC:
