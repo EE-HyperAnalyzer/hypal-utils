@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+
+from pydantic import BaseModel, ConfigDict
 
 from hypal_utils.candles.ohlc import Candle_OHLC
 
 
-@dataclass
-class Detector(ABC):
+class Detector(BaseModel, ABC):
+    model_config = ConfigDict(extra="forbid")
+
     name: str
     unit: str
 
