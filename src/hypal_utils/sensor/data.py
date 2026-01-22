@@ -9,3 +9,4 @@ class SensorData(BaseModel):
     name: str
     source: str
     values: tuple[Candle_OHLC, ...]
+    timestamp: int
