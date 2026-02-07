@@ -1,7 +1,7 @@
 [project]
 name = "hypal-utils"
-version = "0.1.4"
-description = "Add your description here"
+version = "0.2.0"
+description = "Shared utils for HyperAnalyzer project"
 readme = "README.md"
 authors = [
     { name = "Maksim Shushkevich", email = "m.e.shushkevich@yandex.com" }
@@ -11,13 +11,13 @@ dependencies = [
     "pydantic>=2.12.5",
 ]
 
-[build-system]
-requires = ["uv_build>=0.9.18,<0.10.0"]
-build-backend = "uv_build"
-
 [dependency-groups]
 dev = [
     "pre-commit>=4.5.1",
     "ruff>=0.14.10",
     "ty>=0.0.7",
 ]
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
