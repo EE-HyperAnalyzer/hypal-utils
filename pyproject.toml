@@ -1,6 +1,6 @@
 [project]
 name = "hypal-utils"
-version = "0.2.1"
+version = "0.2.2"
 description = "Shared utils for HyperAnalyzer project"
 readme = "README.md"
 authors = [
@@ -19,5 +19,5 @@ dev = [
 ]
 
 [build-system]
-requires = ["uv_build>=0.9.18,<0.10.0"]
+requires = ["uv_build>=0.10.9,<0.11.0"]
 build-backend = "uv_build"
