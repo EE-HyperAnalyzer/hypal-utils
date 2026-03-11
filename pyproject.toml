@@ -1,6 +1,6 @@
 [project]
 name = "hypal-utils"
-version = "0.2.2"
+version = "0.2.3"
 description = "Shared utils for HyperAnalyzer project"
 readme = "README.md"
 authors = [

@@ -1,24 +1,22 @@
-from abc import ABC, abstractmethod
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
 from hypal_utils.candles import Candle_OHLC
 
 
-class ZoneRule(BaseModel, ABC):
+class ZoneRule(BaseModel):
+    type: Literal["NOP"] = "NOP"
     model_config = ConfigDict(
         extra="forbid",
     )
 
-    @abstractmethod
     def is_satisfied(self, candle: Candle_OHLC) -> bool:
-        raise NotImplementedError
-
-    def __str__(self) -> str:
-        return f"{self.__class__.__name__}: ({vars(self)})"
+        return False
 
 
 class ZoneRule_LESS(ZoneRule):
+    type: Literal["LESS"] = "LESS"
     value: float
 
     def is_satisfied(self, candle: Candle_OHLC) -> bool:
@@ -27,6 +25,7 @@ class ZoneRule_LESS(ZoneRule):
 
 
 class ZoneRule_GREATER(ZoneRule):
+    type: Literal["GREATER"] = "GREATER"
     value: float
 
     def is_satisfied(self, candle: Candle_OHLC) -> bool:
@@ -35,6 +34,7 @@ class ZoneRule_GREATER(ZoneRule):
 
 
 class ZoneRule_AND(ZoneRule):
+    type: Literal["AND"] = "AND"
     lhs: ZoneRule
     rhs: ZoneRule
 
@@ -43,6 +43,7 @@ class ZoneRule_AND(ZoneRule):
 
 
 class ZoneRule_OR(ZoneRule):
+    type: Literal["OR"] = "OR"
     lhs: ZoneRule
     rhs: ZoneRule
 
@@ -51,6 +52,7 @@ class ZoneRule_OR(ZoneRule):
 
 
 class ZoneRule_NOT(ZoneRule):
+    type: Literal["NOT"] = "NOT"
     rule: ZoneRule
 
     def is_satisfied(self, candle: Candle_OHLC) -> bool:
