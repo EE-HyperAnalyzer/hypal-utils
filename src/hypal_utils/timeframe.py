@@ -19,13 +19,12 @@ class Timeframe:
                 return self.num * 86400
 
     def __str__(self) -> str:
-        return f"{self.num}:{self.det}"
+        return f"{self.num}{self.det}"
 
     @staticmethod
     def from_str(timeframe: str) -> "Timeframe":
-        assert timeframe.count(":") == 1
-        timeframe_n, timeframe_det = timeframe.split(":")
-        timeframe_n = int(timeframe_n)
+        timeframe_det = timeframe[-1]
+        timeframe_n = int(timeframe[:-1])
         assert timeframe_det in ["s", "m", "h", "d"]
         return Timeframe(num=timeframe_n, det=timeframe_det)  # ty:ignore[invalid-argument-type]
 
